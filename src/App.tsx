@@ -1,5 +1,11 @@
-function App() {
-  return <div></div>;
-}
+import NavBar from './NavBar';
+import MainContent from './MainContent';
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <NavBar />
+      <MainContent />
+    </>
+  );
+}
