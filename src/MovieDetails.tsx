@@ -72,7 +72,6 @@ export default function MovieDetails({
   useEffect(
     function () {
       function callback(e: KeyboardEvent) {
-        console.log(e);
         if (e.code === 'Escape') {
           onCloseMovie();
         }
