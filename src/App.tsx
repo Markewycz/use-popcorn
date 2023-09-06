@@ -11,8 +11,6 @@ import ErrorMsg from './components/ErrorMsg';
 import Search from './components/Search';
 import MovieDetails from './components/MovieDetails';
 
-const KEY = process.env.VITE_KEY;
-
 export interface MovieObject {
   imdbID: string;
   imdbRating: number;
@@ -72,7 +70,7 @@ export default function App() {
           setIsLoading(true);
           setError('');
           const res = await fetch(
-            `https://www.omdbapi.com/?apikey=${KEY}&s=${query}
+            `https://www.omdbapi.com/?apikey=${process.env.VITE_KEY}&s=${query}
       `,
             { signal: controller.signal }
           );
