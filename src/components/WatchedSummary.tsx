@@ -1,4 +1,4 @@
-import { WatchedProp } from './App';
+import { WatchedProp } from '../App';
 
 interface WatchedSummaryProps extends WatchedProp {}
 

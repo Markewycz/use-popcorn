@@ -1,4 +1,4 @@
-import { MovieObject } from './App';
+import { MovieObject } from '../App';
 import MovieItem from './MovieItem';
 
 interface MovieListProps {

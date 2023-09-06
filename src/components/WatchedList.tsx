@@ -1,4 +1,4 @@
-import { WatchedProp } from './App';
+import { WatchedProp } from '../App';
 import WatchedMovie from './WatchedMovie';
 
 interface WatchedListProps extends WatchedProp {

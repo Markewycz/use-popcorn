@@ -1,4 +1,4 @@
-import { MoviesProp } from './App';
+import { MoviesProp } from '../App';
 
 interface NumResultsProps extends MoviesProp {}
 

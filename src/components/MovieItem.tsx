@@ -1,4 +1,4 @@
-import { MovieProp } from './App';
+import { MovieProp } from '../App';
 
 interface MovieItemProps extends MovieProp {
   onSelectMovie?: (movieID: string) => void;

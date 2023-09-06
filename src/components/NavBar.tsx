@@ -1,4 +1,4 @@
-import { ChildrenProp } from './App';
+import { ChildrenProp } from '../App';
 import Logo from './Logo';
 
 interface NavBarProps extends ChildrenProp {}

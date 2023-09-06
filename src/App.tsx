@@ -1,15 +1,15 @@
-import NavBar from './NavBar';
-import MainContent from './MainContent';
-import NumResults from './NumResults';
-import Box from './Box';
 import { useEffect, useState } from 'react';
-import MovieList from './MovieList';
-import WatchedSummary from './WatchedSummary';
-import WatchedList from './WatchedList';
-import Loader from './Loader';
-import ErrorMsg from './ErrorMsg';
-import Search from './Search';
-import MovieDetails from './MovieDetails';
+import NavBar from './components/NavBar';
+import MainContent from './components/MainContent';
+import NumResults from './components/NumResults';
+import Box from './components/Box';
+import MovieList from './components/MovieList';
+import WatchedSummary from './components/WatchedSummary';
+import WatchedList from './components/WatchedList';
+import Loader from './components/Loader';
+import ErrorMsg from './components/ErrorMsg';
+import Search from './components/Search';
+import MovieDetails from './components/MovieDetails';
 
 const KEY = '46ea9ca1';
 
@@ -74,7 +74,7 @@ export default function App() {
           const res = await fetch(
             `http://www.omdbapi.com/?apikey=${KEY}&s=${query}
       `,
-            { signal: controller.signal },
+            { signal: controller.signal }
           );
 
           if (!res.ok)
@@ -109,7 +109,7 @@ export default function App() {
         controller.abort();
       };
     },
-    [query],
+    [query]
   );
 
   return (

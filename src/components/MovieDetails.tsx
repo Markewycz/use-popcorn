@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import StarRating from './StarRating';
 import Loader from './Loader';
 import ErrorMsg from './ErrorMsg';
-import { MovieObject, WatchedProp } from './App';
+import { MovieObject, WatchedProp } from '../App';
 
 const KEY = '46ea9ca1';
 
@@ -37,8 +37,9 @@ export default function MovieDetails({
   const [userRating, setUserRating] = useState<number | null>(null);
 
   const isWatched = watched.map(movie => movie.imdbID).includes(selectedId);
-  const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)
-    ?.userRating;
+  const watchedUserRating = watched.find(
+    movie => movie.imdbID === selectedId
+  )?.userRating;
 
   const {
     Title,
@@ -82,7 +83,7 @@ export default function MovieDetails({
         document.removeEventListener('keydown', callback);
       };
     },
-    [onCloseMovie],
+    [onCloseMovie]
   );
 
   useEffect(
@@ -92,7 +93,7 @@ export default function MovieDetails({
           setIsLoading(true);
           setError('');
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`,
+            `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
           );
           if (!res.ok)
             throw new Error('Something went wrong with fetching movie');
@@ -112,7 +113,7 @@ export default function MovieDetails({
       }
       getMovieDetails();
     },
-    [selectedId],
+    [selectedId]
   );
 
   useEffect(
@@ -124,7 +125,7 @@ export default function MovieDetails({
         document.title = 'usePopcorn';
       };
     },
-    [Title],
+    [Title]
   );
 
   return (

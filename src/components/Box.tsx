@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChildrenProp } from './App';
+import { ChildrenProp } from '../App';
 
 interface BoxProps extends ChildrenProp {}
 

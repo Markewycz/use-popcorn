@@ -1,4 +1,4 @@
-import { MovieProp } from './App';
+import { MovieProp } from '../App';
 
 interface WatchedMovieProps extends MovieProp {
   onDeleteWatched?: (movieID: string) => void;
