@@ -1,4 +1,4 @@
-# React + TypeScript + Vite + TailwindCSS + Prettier/ESLint + gh-pages
+# usePopcorn
 
 ```
 npm i
