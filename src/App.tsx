@@ -12,7 +12,6 @@ import Search from './components/Search';
 import MovieDetails from './components/MovieDetails';
 
 const KEY = process.env.VITE_KEY;
-console.log(process.env.VITE_KEY);
 
 export interface MovieObject {
   imdbID: string;
