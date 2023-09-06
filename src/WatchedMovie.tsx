@@ -1,4 +1,13 @@
-export default function WatchedMovie({ movie }) {
+import { MovieProp } from './App';
+
+interface WatchedMovieProps extends MovieProp {
+  onDeleteWatched?: (movieID: string) => void;
+}
+
+export default function WatchedMovie({
+  movie,
+  onDeleteWatched,
+}: WatchedMovieProps) {
   return (
     <li>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
@@ -14,8 +23,17 @@ export default function WatchedMovie({ movie }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{movie.runtime} min</span>
+          <span>{movie.Runtime} min</span>
         </p>
+        <button
+          className="btn-delete"
+          onClick={() => {
+            console.log(movie.imdbID);
+            onDeleteWatched?.(movie.imdbID);
+          }}
+        >
+          X
+        </button>
       </div>
     </li>
   );

@@ -1,11 +1,12 @@
+import { ChildrenProp } from './App';
 import Logo from './Logo';
-import Search from './Search';
 
-export default function NavBar({ children }) {
+interface NavBarProps extends ChildrenProp {}
+
+export default function NavBar({ children }: NavBarProps) {
   return (
     <nav className="nav-bar">
       <Logo />
-      <Search />
       {children}
     </nav>
   );

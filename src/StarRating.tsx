@@ -1,5 +1,24 @@
 import { useState } from 'react';
 
+interface StarProps {
+  full: boolean;
+  onRate: () => void;
+  onHoverIn: () => void;
+  onHoverOut: () => void;
+  color: string;
+  size: number;
+}
+
+interface StarRatingProps {
+  maxRating?: number;
+  color?: string;
+  size?: number;
+  className?: string;
+  messages?: string[];
+  defaultRating?: number;
+  onSetRating?: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
 const containerStyle = {
   display: 'flex',
   alignItems: 'center',
@@ -9,7 +28,7 @@ const starContainerStyle = {
   display: 'flex',
 };
 
-function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
+function Star({ onRate, full, onHoverIn, onHoverOut, color, size }: StarProps) {
   const starStyle = {
     width: `${size}px`,
     height: `${size}px`,
@@ -60,12 +79,14 @@ export default function StarRating({
   className = '',
   messages = [],
   defaultRating = 0,
-}) {
+  onSetRating,
+}: StarRatingProps) {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
 
-  function handleRating(rating) {
+  function handleRating(rating: number) {
     setRating(rating);
+    onSetRating?.(rating);
   }
 
   const textStyle = {

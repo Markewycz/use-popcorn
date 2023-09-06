@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { ChildrenProp } from './App';
 
-export default function Box({ children }) {
+interface BoxProps extends ChildrenProp {}
+
+export default function Box({ children }: BoxProps) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (

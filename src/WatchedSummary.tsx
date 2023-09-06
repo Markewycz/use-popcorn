@@ -1,10 +1,14 @@
-export default function WatchedSummary({ watched }) {
-  const average = arr =>
+import { WatchedProp } from './App';
+
+interface WatchedSummaryProps extends WatchedProp {}
+
+export default function WatchedSummary({ watched }: WatchedSummaryProps) {
+  const average = (arr: number[]) =>
     arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
   const avgImdbRating = average(watched.map(movie => movie.imdbRating));
   const avgUserRating = average(watched.map(movie => movie.userRating));
-  const avgRuntime = average(watched.map(movie => movie.runtime));
+  const avgRuntime = average(watched.map(movie => movie.Runtime));
 
   return (
     <div className="summary">
@@ -16,15 +20,15 @@ export default function WatchedSummary({ watched }) {
         </p>
         <p>
           <span>⭐️</span>
-          <span>{avgImdbRating}</span>
+          <span>{avgImdbRating.toFixed(2)}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{avgUserRating}</span>
+          <span>{avgUserRating.toFixed(2)}</span>
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime} min</span>
+          <span>{avgRuntime.toFixed(2)} min</span>
         </p>
       </div>
     </div>
