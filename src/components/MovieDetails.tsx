@@ -4,8 +4,6 @@ import Loader from './Loader';
 import ErrorMsg from './ErrorMsg';
 import { MovieObject, WatchedProp } from '../App';
 
-const KEY = '46ea9ca1';
-
 interface MovieDetailsProps extends WatchedProp {
   selectedId: string;
   onCloseMovie: () => void;
