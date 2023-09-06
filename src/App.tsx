@@ -11,7 +11,7 @@ import ErrorMsg from './components/ErrorMsg';
 import Search from './components/Search';
 import MovieDetails from './components/MovieDetails';
 
-const KEY = '46ea9ca1';
+const KEY = import.meta.env.KEY
 
 export interface MovieObject {
   imdbID: string;
