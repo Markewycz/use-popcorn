@@ -17,18 +17,14 @@ export default function WatchedSummary({ watched }: WatchedSummaryProps) {
         <p>
           <span>#️⃣</span>
           <span>{watched.length} movies</span>
+          <span>⏳</span>
+          <span>{avgRuntime.toFixed(2)} min</span>
         </p>
         <p>
           <span>⭐️</span>
           <span>{avgImdbRating.toFixed(2)}</span>
-        </p>
-        <p>
           <span>🌟</span>
           <span>{avgUserRating.toFixed(2)}</span>
-        </p>
-        <p>
-          <span>⏳</span>
-          <span>{avgRuntime.toFixed(2)} min</span>
         </p>
       </div>
     </div>

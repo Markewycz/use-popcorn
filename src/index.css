@@ -39,6 +39,8 @@ body {
   padding: 0 3.2rem;
   background-color: var(--color-primary);
   border-radius: 0.9rem;
+  gap: 1rem;
+  white-space: nowrap;
 }
 
 .main {
@@ -337,6 +339,52 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 815px) {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .nav-bar {
+    padding: 0 1rem;
+    gap: 12px;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .logo span {
+    font-size: 2.8rem;
+  }
+  .logo h1 {
+    display: none;
+  }
+
+  .search {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+  .num-results {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .box {
+    width: 100%;
+    max-width: none;
+  }
+
+  .summary {
+    padding: 1.5rem 1.3rem 1.5rem 1.3rem;
+    text-align: center;
+  }
+
+  .summary div {
+    gap: 0.5rem;
+    white-space: nowrap;
+    flex-direction: column;
+  }
 }
 
 /*
