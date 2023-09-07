@@ -376,8 +376,10 @@ body {
     max-width: none;
   }
   .box:nth-of-type(2) {
+    min-height: 450px;
+    max-height: 600px;
     overflow: hidden;
-    height: 500px;
+    height: unset;
   }
 
   .summary {
