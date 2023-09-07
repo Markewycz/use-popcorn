@@ -3,6 +3,7 @@ import StarRating from './StarRating';
 import Loader from './Loader';
 import ErrorMsg from './ErrorMsg';
 import { MovieObject, WatchedProp } from '../App';
+import { useKey } from '../hooks/useKey';
 
 interface MovieDetailsProps extends WatchedProp {
   selectedId: string;
@@ -68,22 +69,9 @@ export default function MovieDetails({
       onCloseMovie();
     }
   }
-  useEffect(
-    function () {
-      function callback(e: KeyboardEvent) {
-        if (e.code === 'Escape') {
-          onCloseMovie();
-        }
-      }
-      document.addEventListener('keydown', callback);
 
-      return function () {
-        document.removeEventListener('keydown', callback);
-      };
-    },
-    [onCloseMovie]
-  );
-
+  useKey('Escape', onCloseMovie);
+  
   useEffect(
     function () {
       async function getMovieDetails() {

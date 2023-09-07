@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import NavBar from './components/NavBar';
 import MainContent from './components/MainContent';
 import NumResults from './components/NumResults';
@@ -10,6 +10,8 @@ import Loader from './components/Loader';
 import ErrorMsg from './components/ErrorMsg';
 import Search from './components/Search';
 import MovieDetails from './components/MovieDetails';
+import { useMovies } from './hooks/useMovies';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 export interface MovieObject {
   imdbID: string;
@@ -38,12 +40,10 @@ export interface ChildrenProp {
 }
 
 export default function App() {
-  const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState<MovieObject[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string>('');
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const { movies, error, isLoading } = useMovies(query, handleCloseMovie);
+  const [watched, setWatched] = useLocalStorage([], 'watched');
 
   function handleSelectMovie(id: string) {
     setSelectedId(selectedId => (id === selectedId ? null : id));
@@ -54,61 +54,14 @@ export default function App() {
   }
 
   function handleAddWatched(movie: MovieObject) {
-    setWatched(watched => [...watched, movie]);
+    setWatched((watched: MovieObject[]) => [...watched, movie]);
   }
 
   function handleDeleteWatched(id: string) {
-    setWatched(watched => watched.filter(movie => movie.imdbID !== id));
+    setWatched((watched: MovieObject[]) =>
+      watched.filter(movie => movie.imdbID !== id)
+    );
   }
-
-  useEffect(
-    function () {
-      const controller = new AbortController();
-
-      async function fetchMovies() {
-        try {
-          setIsLoading(true);
-          setError('');
-          const res = await fetch(
-            `https://www.omdbapi.com/?apikey=${process.env.VITE_KEY}&s=${query}
-      `,
-            { signal: controller.signal }
-          );
-
-          if (!res.ok)
-            throw new Error('Something went wrong with fetching movies');
-
-          const data = await res.json();
-
-          if (data.Response === 'False') throw new Error(data.Error);
-
-          setMovies(data.Search);
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } catch (err: any) {
-          console.log(err.message);
-
-          if (err.name !== 'AbortError') {
-            setError(err.message);
-          }
-        } finally {
-          setIsLoading(false);
-        }
-      }
-      if (query.length < 3) {
-        setMovies([]);
-        setError('');
-        return;
-      }
-
-      handleCloseMovie();
-      fetchMovies();
-
-      return function () {
-        controller.abort();
-      };
-    },
-    [query]
-  );
 
   return (
     <>
