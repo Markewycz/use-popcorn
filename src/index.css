@@ -373,8 +373,12 @@ body {
 
   .box {
     width: 100%;
-    height: 450px;
+    height: 400px;
     max-width: none;
+  }
+  .box:nth-of-type(2) {
+    overflow: hidden;
+    height: 500px;
   }
 
   .summary {
