@@ -1,8 +1,14 @@
 # usePopcorn
 
+### Technologies Used
 
-## Usage
-```
-npm i
-npm run dev
-```
+- React, React Custom Hooks
+- TypeScript
+- CSS
+
+### Outcome
+- Data fetched from api with proper error handling
+- Custom hooks for bigger parts of functionalitys
+- Local storage for data storing
+
+### <a href="https://use-popcorn-brown.vercel.app/">Live demo</a> 👈
